@@ -156,16 +156,16 @@ td {
 
 th:first-child,
 td:first-child {
-    padding-left: 1rem;
+    padding-left: 6rem;
 }
 
 
 td:nth-last-child(1) {
-    padding: 0 4rem 0 0;
+    padding: 0 6rem 0 0;
 }
 
 td:nth-last-child(2) {
-    padding: 0 0 0 4rem;
+    padding: 0 0 0 6rem;
 }
 
 th {
