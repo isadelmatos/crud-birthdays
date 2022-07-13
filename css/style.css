@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    list-style: none;
+    border-spacing: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    --cor-background: linear-gradient(180deg, #7F84FB 4.86%, rgba(29, 29, 29, 0) 81.59%);
+    --cor-destaque-roxo: #B67FFB;
+    --cor-placeholder: #727272;
+    --cor-basica-texto: #FFF;
+    --cor-inputs: #000;
+    --cor-borda-linhas-tabela: #C0C0C0;
+    --cor-botao-hover: rgba(187, 127, 251, 0.8);
+}
+
+body {
+    background-color: #1d1d1d;
+}
+
+main {
+    position: relative;
+}
+
+.form-cadastro-niver {
+    width: 100vw;
+    height: 40vh;
+    background: var(--cor-background);
+}
+
+.container-form {
+    height: 100%;
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: var(--cor-destaque-roxo);
+}
+
+h1 span {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    cursor: default;
+}
+
+.form {
+    margin-top: 1em;
+}
+
+.input,
+.input-modal {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    border: 2px solid #FFF;
+    color: var(--cor-inputs);
+}
+
+.input {
+    margin-right: 2rem;
+}
+
+.input-nome {
+    width: 600px;
+}
+
+.input-data {
+    width: 175px;
+    color: var(--cor-inputs);
+    cursor: default;
+}
+
+.input-nome:focus,
+.input-data:focus,
+.input-nome-cadastrado:focus,
+.input-data-cadastrada:focus {
+    outline: none;
+    border: 2px solid var(--cor-destaque-roxo);
+}
+
+.input-nome::placeholder,
+.input-data::placeholder,
+.input-nome-cadastrado::placeholder,
+.input-data-cadastrada::placeholder {
+    color: var(--cor-placeholder);
+}
+
+.botao {
+    background-color: var(--cor-destaque-roxo);
+    color: #FFF;
+    padding: 0.75rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: var(--cor-botao-hover);
+    transition: 0.3s all ease;
+}
+
+.tabela-cadastro-niver {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+.tabela-cadastro-niver {
+    width: 100vw;
+}
+
+.table caption {
+    font-weight: 700;
+    color: var(--cor-destaque-roxo);
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    width: max-content;
+    margin: 0 auto 2rem auto;
+}
+
+.tabela-criada {
+    display: none;
+}
+
+th,
+td {
+    padding: 1rem 8rem;
+    text-align: center;
+    color: var(--cor-basica-texto);
+}
+
+td {
+
+    border-top: 1px solid var(--cor-borda-linhas-tabela);
+}
+
+th:first-child,
+td:first-child {
+    padding-left: 1rem;
+}
+
+
+td:nth-last-child(1) {
+    padding: 0 4rem 0 0;
+}
+
+td:nth-last-child(2) {
+    padding: 0 0 0 4rem;
+}
+
+th {
+    font-weight: 600;
+}
+
+td {
+    font-weight: 500;
+}
+
+td .bi {
+    cursor: pointer;
+    font-size: 1.15rem;
+}
+
+td .bi:hover {
+    color: var(--cor-destaque-roxo);
+    transition: 0.2s all ease;
+}
+
+#span-nenhum-cadastro {
+    display: contents;
+    color: var(--cor-basica-texto);
+    font-weight: 500;
+}
+
+.modal {
+    visibility: hidden;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal div {
+    background-color: #1d1d1d;
+    padding: 4rem 5rem;
+    border-radius: 10px;
+}
+
+h2 {
+    font-weight: 700;
+    color: var(--cor-destaque-roxo);
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.icon-fechar-modal:hover {
+    cursor: pointer;
+    color: var(--cor-botao-hover);
+}
+
+.form-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-modal {
+    margin-bottom: 2rem;
+}
+
+.input-nome-cadastrado,
+.input-data-cadastrada {
+    width: 500px;
+}

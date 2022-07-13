@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de aniversários</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <main>
+        <section class="form-cadastro-niver">
+            <div class="container-form">
+                <h1 tabindex="1">
+                    <span role="img" aria-label="Rosto festivo">&#x1F973;</span>
+                    Cadastro de aniversários
+                </h1>
+                <form name="form" class="form" id="form">
+                    <input aria-label="Nome" type="text" name="nome" class="input input-nome"
+                        placeholder="Insira o nome" autocomplete="off" required>
+                    <input aria-label="Data de aniversário" name="data" class="input input-data"
+                        placeholder="dd/mm/aaaa" onfocus="(this.type='date')" required>
+                    <button aria-label="Cadastrar" type="submit" class="botao">Cadastrar</button>
+                </form>
+            </div>
+        </section>
+        <section class="conteudo-cadastrado">
+            <section class="tabela-cadastro-niver">
+                <table class="table" id="table">
+                    <caption>Aniversários cadastrados</caption>
+                    <thead class="tabela-criada">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data de aniversário</th>
+                            <th colspan="2">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tabela-criada">
+                    </tbody>
+                </table>
+                <span id="span-nenhum-cadastro">Nenhum cadastro</span>
+            </section>
+            <section class="modal">
+                <div>
+                    <h2>Alterar cadastro <i class="icon-fechar-modal bi bi-x-lg"></i></h2>
+                    <form name="form-modal" class="form-modal" id="form-modal">
+                        <input aria-label="Nome cadastrado" type="text" name="nome-cadastrado"
+                            class="input-modal input-nome-cadastrado" placeholder="Insira o nome" autocomplete="off"
+                            required>
+                        <input aria-label="Data de aniversário cadastrada" name="data-cadastrada"
+                            class="input-modal input-data-cadastrada" placeholder="dd/mm/aaaa"
+                            onfocus="(this.type='date')" required>
+                        <button aria-label="Alterar cadastro" type="submit" class="botao">Confirmar alteração</button>
+                    </form>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
