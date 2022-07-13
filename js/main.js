@@ -52,6 +52,11 @@ function carregaTabela() {
         localStorage.forEach((pessoa, index) => {
             adicionaItem(pessoa, index);
         });
+    } else {
+        spanListaVazia.style.visibility = "visible";
+        tabelaCriada.forEach(tag => {
+            tag.style.display = "none";
+        });
     }
 }
 
@@ -67,7 +72,7 @@ function adicionaItem(pessoa, index) {
     <td>${nome}</td>
     <td>${dataAniversario}</td>
     <td onclick="editaItem(${index})"><i class="bi bi-pencil-square"></i></td>
-    <td><i class="bi bi-trash3"></i></td>
+    <td onclick="deletaItem(${index})"><i class="bi bi-trash3"></i></td>
     `
 
     tbody.appendChild(tr);
@@ -108,6 +113,15 @@ function editaItem(index) {
         modal.style.visibility = "hidden";
     })
 
+}
+
+
+function deletaItem(index) {
+    const localStorage = acessaLocalStorage();
+
+    localStorage.splice(index, 1);
+    atualizaLocalStorage(localStorage);
+    carregaTabela();
 }
 
 carregaTabela();
