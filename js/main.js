@@ -1,26 +1,21 @@
 const form = document.getElementById('form');
-const table = document.getElementById('table');
+const tbody = document.getElementById('table').lastElementChild;
 const tabelaCriada = document.querySelectorAll('.tabela-criada');
 const spanListaVazia = document.getElementById('span-nenhum-cadastro');
+const modal = document.getElementById('modal');
+const iconeFechar = document.querySelector('.icon-fechar-modal');
+const formModal = document.getElementById('form-modal');
 
-const listaPessoasCadastradas = JSON.parse(localStorage.getItem('listaPessoasCadastradas')) || [];
 
-
-if (listaPessoasCadastradas.length) {
-    spanListaVazia.style.visibility = "hidden";
-
-    tabelaCriada.forEach(item => {
-        item.style.display = "contents";
-    });
-
-    listaPessoasCadastradas.forEach(pessoa => {
-        adicionaItem(pessoa);
-    })
-}
+let acessaLocalStorage = () => JSON.parse(localStorage.getItem('listaPessoasCadastradas')) ?? [];
+let atualizaLocalStorage = (nomeBanco) => localStorage.setItem('listaPessoasCadastradas', JSON.stringify(nomeBanco));
 
 
 form.addEventListener('submit', evento => {
     evento.preventDefault();
+
+    const localStorage = acessaLocalStorage();
+    console.log(localStorage);
 
     const nome = evento.target.elements['nome'];
     const data = evento.target.elements['data'];
@@ -30,46 +25,89 @@ form.addEventListener('submit', evento => {
         data: data.value
     }
 
-    if (!listaPessoasCadastradas.length) {
-        spanListaVazia.style.visibility = "hidden";
-        tabelaCriada.forEach(item => {
-            item.style.display = "contents";
-        });
-        adicionaItem(pessoa);
+    localStorage.push(pessoa);
 
-    } else {
-        adicionaItem(pessoa);
-    }
+    atualizaLocalStorage(localStorage);
+    carregaTabela();
 
-    listaPessoasCadastradas.push(pessoa);
-    localStorage.setItem('listaPessoasCadastradas', JSON.stringify(listaPessoasCadastradas));
-
+    nome.value = '';
+    data.value = '';
 });
 
 
-function adicionaItem(pessoa) {
 
-    const tbody = table.lastElementChild;
+function carregaTabela() {
 
+    const localStorage = acessaLocalStorage();
+
+    if (localStorage.length) {
+        spanListaVazia.style.visibility = "hidden";
+
+        tabelaCriada.forEach(tag => {
+            tag.style.display = "contents";
+        });
+
+        tbody.innerHTML = '';
+
+        localStorage.forEach((pessoa, index) => {
+            adicionaItem(pessoa, index);
+        });
+    }
+}
+
+
+
+function adicionaItem(pessoa, index) {
     const nome = pessoa.nome;
     const dataAniversario = pessoa.data;
 
     const tr = document.createElement('tr');
-    const celulaNome = document.createElement('td');
-    const celulaData = document.createElement('td');
-    const celulaEditar = document.createElement('td');
-    const celulaRemover = document.createElement('td');
 
-    celulaNome.innerHTML = nome;
-    celulaData.innerHTML = dataAniversario;
-    celulaEditar.innerHTML = '<i class="bi bi-pencil-square"></i>'
-    celulaRemover.innerHTML = '<i class="bi bi-trash3"></i>'
-
-    const celulas = [celulaNome, celulaData, celulaEditar, celulaRemover];
-
-    celulas.forEach(celula => {
-        tr.appendChild(celula);
-    })
+    tr.innerHTML = `
+    <td>${nome}</td>
+    <td>${dataAniversario}</td>
+    <td onclick="editaItem(${index})"><i class="bi bi-pencil-square"></i></td>
+    <td><i class="bi bi-trash3"></i></td>
+    `
 
     tbody.appendChild(tr);
 }
+
+
+
+function editaItem(index) {
+    modal.style.visibility = "visible";
+
+    const localStorage = acessaLocalStorage();
+    const inputNome = formModal.elements['nome-cadastrado'];
+    const inputData = formModal.elements['data-cadastrada'];
+
+    const elementoSelecionado = localStorage.find(elemento => elemento === localStorage[index]);
+
+    inputNome.value = elementoSelecionado.nome;
+    inputData.value = elementoSelecionado.data;
+
+
+    formModal.addEventListener('submit', evento => {
+        evento.preventDefault();
+
+        const elementoAlterado = {
+            nome: inputNome.value,
+            data: inputData.value
+        }
+
+        localStorage.splice(index, 1, elementoAlterado);
+
+        atualizaLocalStorage(localStorage);
+        carregaTabela();
+
+        modal.style.visibility = "hidden";
+    });
+
+    iconeFechar.addEventListener('click', () => {
+        modal.style.visibility = "hidden";
+    })
+
+}
+
+carregaTabela();

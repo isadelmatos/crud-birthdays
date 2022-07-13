@@ -104,7 +104,8 @@ h1 span {
     color: var(--cor-placeholder);
 }
 
-.botao {
+.botao,
+.botao-modal {
     background-color: var(--cor-destaque-roxo);
     color: #FFF;
     padding: 0.75rem 2rem;

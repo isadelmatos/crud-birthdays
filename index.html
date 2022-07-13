@@ -43,7 +43,7 @@
                 </table>
                 <span id="span-nenhum-cadastro">Nenhum cadastro</span>
             </section>
-            <section class="modal">
+            <section class="modal" id="modal">
                 <div>
                     <h2>Alterar cadastro <i class="icon-fechar-modal bi bi-x-lg"></i></h2>
                     <form name="form-modal" class="form-modal" id="form-modal">
@@ -53,7 +53,9 @@
                         <input aria-label="Data de aniversário cadastrada" name="data-cadastrada"
                             class="input-modal input-data-cadastrada" placeholder="dd/mm/aaaa"
                             onfocus="(this.type='date')" required>
-                        <button aria-label="Alterar cadastro" type="submit" class="botao">Confirmar alteração</button>
+                        <button aria-label="Alterar cadastro" type="submit" class="botao-modal"
+                            form="form-modal">Confirmar
+                            alteração</button>
                     </form>
                 </div>
             </section>
