@@ -64,20 +64,20 @@ function carregaTabela() {
 
 function adicionaItem(pessoa, index) {
     const nome = pessoa.nome;
-    const dataAniversario = pessoa.data;
+    const dataAniversario = new Date(pessoa.data);
+    const dataFormatada = dataAniversario.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
     const tr = document.createElement('tr');
 
     tr.innerHTML = `
-    <td>${nome}</td>
-    <td>${dataAniversario}</td>
+    <td title="${nome}">${nome}</td>
+    <td>${dataFormatada}</td>
     <td onclick="editaItem(${index})"><i class="bi bi-pencil-square"></i></td>
     <td onclick="deletaItem(${index})"><i class="bi bi-trash3"></i></td>
     `
 
     tbody.appendChild(tr);
 }
-
 
 
 function editaItem(index) {

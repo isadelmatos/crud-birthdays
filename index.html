@@ -20,7 +20,7 @@
                 </h1>
                 <form name="form" class="form" id="form">
                     <input aria-label="Nome" type="text" name="nome" class="input input-nome"
-                        placeholder="Insira o nome" autocomplete="off" required>
+                        placeholder="Insira o nome" autocomplete="off" pattern="^(?=.*[a-zA-Z])(?!.*[0-9])(?!.*[!@#$%&*_=+-]).{3, 120}$" title="Insira apenas nome com letras de 3 a 40 caracteres." required>
                     <input aria-label="Data de aniversário" name="data" class="input input-data"
                         placeholder="dd/mm/aaaa" onfocus="(this.type='date')" required>
                     <button aria-label="Cadastrar" type="submit" class="botao">Cadastrar</button>
@@ -35,7 +35,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Data de aniversário</th>
-                            <th colspan="2">Ações</th>
+                            <th colspan="2">Editar/Remover</th>
                         </tr>
                     </thead>
                     <tbody class="tabela-criada">
@@ -48,11 +48,10 @@
                     <h2>Alterar cadastro <i class="icon-fechar-modal bi bi-x-lg"></i></h2>
                     <form name="form-modal" class="form-modal" id="form-modal">
                         <input aria-label="Nome cadastrado" type="text" name="nome-cadastrado"
-                            class="input-modal input-nome-cadastrado" placeholder="Insira o nome" autocomplete="off"
+                            class="input-modal input-nome-cadastrado" placeholder="Insira o nome" autocomplete="off" pattern="^(?=.*[a-zA-Z])(?!.*[0-9])(?!.*[!@#$%&*_=+-]).{3,120}$" title="Insira apenas letras de 3 a 120 caracteres."
                             required>
-                        <input aria-label="Data de aniversário cadastrada" name="data-cadastrada"
-                            class="input-modal input-data-cadastrada" placeholder="dd/mm/aaaa"
-                            onfocus="(this.type='date')" required>
+                        <input aria-label="Data de aniversário cadastrada" type="date" name="data-cadastrada"
+                            class="input-modal input-data-cadastrada" required>
                         <button aria-label="Alterar cadastro" type="submit" class="botao-modal"
                             form="form-modal">Confirmar
                             alteração</button>
