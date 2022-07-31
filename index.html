@@ -20,7 +20,7 @@
                 </h1>
                 <form name="form" class="form" id="form">
                     <input aria-label="Nome" type="text" name="nome" class="input input-nome"
-                        placeholder="Insira o nome" autocomplete="off" pattern="^(?=.*[a-zA-Z])(?!.*[0-9])(?!.*[!@#$%&*_=+-]).{3, 120}$" title="Insira apenas nome com letras de 3 a 40 caracteres." required>
+                        placeholder="Insira o nome" autocomplete="off" pattern="^(?=.*[a-zA-Z])(?!.*[0-9])(?!.*[!@#$%^&*_=+-]).{3,120}$" title="Insira apenas nome com letras de 3 a 120 caracteres." required>
                     <input aria-label="Data de aniversário" name="data" class="input input-data"
                         placeholder="dd/mm/aaaa" onfocus="(this.type='date')" required>
                     <button aria-label="Cadastrar" type="submit" class="botao">Cadastrar</button>
@@ -31,7 +31,7 @@
             <section class="tabela-cadastro-niver">
                 <table class="table" id="table">
                     <caption>Aniversários cadastrados</caption>
-                    <thead class="tabela-criada">
+                    <thead class="table-dark tabela-criada">
                         <tr>
                             <th>Nome</th>
                             <th>Data de aniversário</th>

@@ -15,7 +15,6 @@ form.addEventListener('submit', evento => {
     evento.preventDefault();
 
     const localStorage = acessaLocalStorage();
-    console.log(localStorage);
 
     const nome = evento.target.elements['nome'];
     const data = evento.target.elements['data'];
